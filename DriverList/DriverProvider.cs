@@ -12,5 +12,10 @@ namespace DriverList
         {
             return hhl.GetAll().OrderBy(items => items.name);
         }
+
+        public static void StopDevice(DEVICE_INFO device)
+        {
+            hhl.SetDeviceState(device, false);
+        }
     }
 }

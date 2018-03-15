@@ -26,16 +26,18 @@ namespace DriverList
 
         private void scheduleButton_Click(object sender, EventArgs e)
         {
-
+            if (scheduleDriverCombo.SelectedItem != null) 
+                foreach (var device in DriverProvider.GetDriverList().Where(x => x.hardwareId == (string)scheduleDriverCombo.SelectedValue)) //find all devices with selected hardwareId
+                    DriverProvider.StopDevice(device); //Stop device
         }
 
         private void StartReloadingDevices()
         {
             Observable.Timer(TimeSpan.Zero, TimeSpan.FromSeconds(10)) //Start new observable timer
                            .Select(x =>
-                       {                           
+                       {
                            return DriverProvider.GetDriverList();  //on each timer tick get list of all drivers in separate thread
-                       })   
+                       })
                        .TakeUntil(stopSubject)  //more control. If we want we can stop it anytime
                        .ObserveOn(SynchronizationContext.Current)   //Sync results with current thread
                        .Subscribe(result => //receive results to process them
@@ -44,8 +46,8 @@ namespace DriverList
                            ReloadDriversCombo(result); // reload combobox saving selection
                        }, exception =>
                        {
-                //todo : log error or show it to user somehow
-            });
+                           //todo : log error or show it to user somehow
+                       });
         }
 
         private void ReloadDriversGrid(IEnumerable<DEVICE_INFO> result)
@@ -67,7 +69,7 @@ namespace DriverList
         }
 
         private void ReloadDriversCombo(IEnumerable<DEVICE_INFO> result)
-        {            
+        {
             var selected = (DriverDetails)scheduleDriverCombo.SelectedItem;
 
             var datasource = result.Select(x =>
@@ -75,7 +77,7 @@ namespace DriverList
             {
                 Name = x.name + (string.IsNullOrEmpty(x.hardwareId) ? "" : string.Format(" ({0})", x.hardwareId)),  //make items more unique
                 DeviceID = x.hardwareId
-            }).ToList();            
+            }).ToList();
 
             scheduleDriverCombo.DataSource = datasource;
 
@@ -90,6 +92,6 @@ namespace DriverList
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             stopSubject.OnNext(Unit.Default);
-        }        
+        }
     }
 }
