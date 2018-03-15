@@ -1,6 +1,6 @@
 ﻿namespace DriverList
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -118,6 +118,7 @@
             this.scheduleButton.TabIndex = 0;
             this.scheduleButton.Text = "Set";
             this.scheduleButton.UseVisualStyleBackColor = true;
+            this.scheduleButton.Click += new System.EventHandler(this.scheduleButton_Click);
             // 
             // scheduleTimePicker
             // 
@@ -140,15 +141,17 @@
             this.scheduleDriverCombo.Size = new System.Drawing.Size(517, 21);
             this.scheduleDriverCombo.TabIndex = 2;
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(733, 272);
             this.Controls.Add(this.tableLayoutPanel1);
             this.MinimumSize = new System.Drawing.Size(749, 311);
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "Driver List";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
