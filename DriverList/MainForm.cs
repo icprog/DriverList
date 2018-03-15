@@ -36,7 +36,7 @@ namespace DriverList
                 schedule.DeviceID = ((DriverDetails)scheduleDriverCombo.SelectedItem).DeviceID;
                 schedule.DeviceName = ((DriverDetails)scheduleDriverCombo.SelectedItem).Name;
 
-                scheduleStopSubject.OnNext(Unit.Default); //stoppping scheduler if it's running
+                scheduleStopSubject.OnNext(Unit.Default); //stop scheduler if it's running
 
                 Scheduler.StartSchedule(schedule.ScheduleTime, schedule.DeviceID, scheduleStopSubject); //starting schedule again
 
@@ -45,7 +45,7 @@ namespace DriverList
             else if (schedule.IsSet)
             {
                 schedule = new Scheduler.Schedule();
-                scheduleStopSubject.OnNext(Unit.Default);                
+                scheduleStopSubject.OnNext(Unit.Default);   //stop scheduler if it's running         
                 ClearScheduleUI();
             }
         }
