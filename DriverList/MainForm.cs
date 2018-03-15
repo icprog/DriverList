@@ -1,5 +1,6 @@
 ﻿using HardwareHelperLib;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reactive;
 using System.Reactive.Linq;
@@ -32,21 +33,35 @@ namespace DriverList
         {
             Observable.Timer(TimeSpan.Zero, TimeSpan.FromSeconds(10))
                            .Select(x =>
-                       {
-                           HH_Lib hhl = new HH_Lib();
-                           return hhl.GetAll();
+                       {                           
+                           return DriverProvider.GetDriverList().ToList();
                        })
                        .TakeUntil(stopSubject)
                        .ObserveOn(SynchronizationContext.Current)
                        .Subscribe(result =>
                        {
-                           var listItems = result.Select(device => new ListViewItem(new string[] { device.name, device.friendlyName, device.hardwareId, device.status.ToString() })).ToArray();
-                           listDrivers.Items.Clear();
-                           listDrivers.Items.AddRange(listItems);
+                           ReloadDriversGrid(result);
                        }, exception =>
                        {
                 //todo : log error or show it to user somehow
             });
+        }
+
+        private void ReloadDriversGrid(List<DEVICE_INFO> result)
+        {
+            var selectedindex = -1;
+
+            if (listDrivers.SelectedIndices.Count > 0)
+            {
+                selectedindex = listDrivers.SelectedIndices[0];
+            }
+
+            var results = result.Select(device => new ListViewItem(new string[] { device.name, device.friendlyName, device.hardwareId, device.status.ToString() })).ToArray();
+            listDrivers.Items.Clear();
+            listDrivers.Items.AddRange(results);
+
+            if (selectedindex > 0 && listDrivers.Items.Count > selectedindex)
+                listDrivers.Items[selectedindex].Selected = true;
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
