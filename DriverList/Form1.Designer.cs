@@ -30,7 +30,7 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.listDrivers = new System.Windows.Forms.ListView();
+            this.listDrivers = new ListViewNoFlicker();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.scheduleButton = new System.Windows.Forms.Button();
@@ -201,7 +201,7 @@
         private System.Windows.Forms.Button scheduleButton;
         private System.Windows.Forms.DateTimePicker scheduleTimePicker;
         private System.Windows.Forms.ComboBox scheduleDriverCombo;
-        private System.Windows.Forms.ListView listDrivers;
+        private ListViewNoFlicker listDrivers;
 
         private System.Windows.Forms.ColumnHeader CommonName;
         private System.Windows.Forms.ColumnHeader FriendlyName;

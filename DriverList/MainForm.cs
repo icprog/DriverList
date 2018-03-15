@@ -24,7 +24,7 @@ namespace DriverList
             StartReloadingDevices();
         }
 
-        private void scheduleButton_Click(object sender, System.EventArgs e)
+        private void scheduleButton_Click(object sender, EventArgs e)
         {
 
         }
