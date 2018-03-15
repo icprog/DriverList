@@ -30,7 +30,11 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.listDrivers = new ListViewNoFlicker();
+            this.listDrivers = new DriverList.ListViewNoFlicker();
+            this.CommonName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.FriendlyName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.HardwareId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.scheduleButton = new System.Windows.Forms.Button();
@@ -40,12 +44,6 @@
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-
-            this.CommonName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.FriendlyName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.HardwareId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -165,6 +163,7 @@
             // 
             // scheduleDriverCombo
             // 
+            this.scheduleDriverCombo.DisplayMember = "Name";
             this.scheduleDriverCombo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.scheduleDriverCombo.FormattingEnabled = true;
             this.scheduleDriverCombo.Location = new System.Drawing.Point(102, 2);
@@ -172,6 +171,7 @@
             this.scheduleDriverCombo.Name = "scheduleDriverCombo";
             this.scheduleDriverCombo.Size = new System.Drawing.Size(517, 21);
             this.scheduleDriverCombo.TabIndex = 2;
+            this.scheduleDriverCombo.ValueMember = "DeviceID";
             // 
             // MainForm
             // 
