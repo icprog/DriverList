@@ -15,7 +15,7 @@ namespace DriverList
         readonly Subject<Unit> stopSubject = new Subject<Unit>();
         readonly Subject<Unit> scheduleStopSubject = new Subject<Unit>();
 
-        Scheduler.Schedule schedule = new Scheduler.Schedule();
+        StopDeviceScheduler.Schedule schedule = new StopDeviceScheduler.Schedule();
 
         public MainForm()
         {
@@ -38,20 +38,23 @@ namespace DriverList
 
                 scheduleStopSubject.OnNext(Unit.Default); //stop scheduler if it's running
 
-                Scheduler.StartSchedule(schedule.ScheduleTime, schedule.DeviceID, scheduleStopSubject); //starting schedule again
-
+                StopDeviceScheduler.StartSchedule(schedule.ScheduleTime, schedule.DeviceID, scheduleStopSubject); //starting schedule again
+                ScheduleSettingsProvider.Save(schedule); //save serialized schedule
                 UpdateScheduleUI();
             }
             else if (schedule.IsSet)
             {
-                schedule = new Scheduler.Schedule();
-                scheduleStopSubject.OnNext(Unit.Default);   //stop scheduler if it's running         
+                schedule = new StopDeviceScheduler.Schedule();
+                scheduleStopSubject.OnNext(Unit.Default);   //stop scheduler if it's running    
+                ScheduleSettingsProvider.Clear(); //remove serialized schedule file
                 ClearScheduleUI();
             }
         }
 
         private void StartReloadingDevices()
         {
+            schedule = ScheduleSettingsProvider.Load();
+
             Observable.Timer(TimeSpan.Zero, TimeSpan.FromSeconds(10)) //Start new observable timer
                            .Select(x =>
                        {
@@ -63,10 +66,16 @@ namespace DriverList
                        {
                            ReloadDriversGrid(result); //reload grid saving selection
                            ReloadDriversCombo(result); // reload combobox saving selection
+                           UpdateScheduleUI();
                        }, exception =>
                        {
                            //todo : log error or show it to user somehow
                        });
+
+            if (schedule.IsSet)
+            {
+                StopDeviceScheduler.StartSchedule(schedule.ScheduleTime, schedule.DeviceID, scheduleStopSubject);
+            }
         }
 
         private void ReloadDriversGrid(IEnumerable<DEVICE_INFO> result)
@@ -108,6 +117,9 @@ namespace DriverList
             }
         }
 
+        /// <summary>
+        /// Update schedule UI part depending on schedule state
+        /// </summary>
         private void UpdateScheduleUI()
         {
             scheduleButton.Text = schedule.IsSet ? "Unset" : "Set";
@@ -119,6 +131,9 @@ namespace DriverList
             }
         }
 
+        /// <summary>
+        /// Reset schedule UI part
+        /// </summary>
         private void ClearScheduleUI()
         {
             scheduleButton.Text = "Set";

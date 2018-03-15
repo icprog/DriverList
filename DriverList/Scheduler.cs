@@ -6,8 +6,14 @@ using System.Reactive.Subjects;
 
 namespace DriverList
 {
-    public class Scheduler
+    /// <summary>
+    /// Class that executes schedule at desired time
+    /// </summary>
+    public class StopDeviceScheduler
     {
+        /// <summary>
+        /// Structure that stores schedule details
+        /// </summary>
         [Serializable]
         public struct Schedule
         {
@@ -17,6 +23,12 @@ namespace DriverList
             public bool IsSet;
         }      
 
+        /// <summary>
+        /// Start daily schedule to stop desired device at desired time
+        /// </summary>
+        /// <param name="scheduleTime">Daytime to execute schedule task</param>
+        /// <param name="deviceId">Device ID that should be stopped</param>
+        /// <param name="stopSubject">Control subject, to stop schedule anytime</param>
         public static void StartSchedule(TimeSpan scheduleTime, string deviceId, Subject<Unit> stopSubject)
         {
             var now = DateTime.Now;
