@@ -40,6 +40,12 @@
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+
+            this.CommonName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.FriendlyName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.HardwareId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -70,6 +76,11 @@
             // 
             // listDrivers
             // 
+            this.listDrivers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.CommonName,
+            this.FriendlyName,
+            this.HardwareId,
+            this.Status});
             this.listDrivers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listDrivers.FullRowSelect = true;
             this.listDrivers.Location = new System.Drawing.Point(3, 16);
@@ -79,6 +90,27 @@
             this.listDrivers.TabIndex = 0;
             this.listDrivers.UseCompatibleStateImageBehavior = false;
             this.listDrivers.View = System.Windows.Forms.View.Details;
+            // 
+            // CommonName
+            // 
+            this.CommonName.Text = "Name";
+            this.CommonName.Width = 236;
+            // 
+            // FriendlyName
+            // 
+            this.FriendlyName.Text = "Friendly Name";
+            this.FriendlyName.Width = 235;
+            // 
+            // HardwareId
+            // 
+            this.HardwareId.Text = "Hardware Id";
+            this.HardwareId.Width = 270;
+            // 
+            // Status
+            // 
+            this.Status.Text = "Status";
+            this.Status.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Status.Width = 93;
             // 
             // groupBox2
             // 
@@ -170,6 +202,11 @@
         private System.Windows.Forms.DateTimePicker scheduleTimePicker;
         private System.Windows.Forms.ComboBox scheduleDriverCombo;
         private System.Windows.Forms.ListView listDrivers;
+
+        private System.Windows.Forms.ColumnHeader CommonName;
+        private System.Windows.Forms.ColumnHeader FriendlyName;
+        private System.Windows.Forms.ColumnHeader HardwareId;
+        private System.Windows.Forms.ColumnHeader Status;
     }
 }
 
