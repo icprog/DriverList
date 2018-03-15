@@ -13,6 +13,9 @@ namespace DriverList
     public partial class MainForm : Form
     {
         readonly Subject<Unit> stopSubject = new Subject<Unit>();
+        readonly Subject<Unit> scheduleStopSubject = new Subject<Unit>();
+
+        Scheduler.Schedule schedule = new Scheduler.Schedule();
 
         public MainForm()
         {
@@ -26,9 +29,25 @@ namespace DriverList
 
         private void scheduleButton_Click(object sender, EventArgs e)
         {
-            if (scheduleDriverCombo.SelectedItem != null) 
-                foreach (var device in DriverProvider.GetDriverList().Where(x => x.hardwareId == (string)scheduleDriverCombo.SelectedValue)) //find all devices with selected hardwareId
-                    DriverProvider.StopDevice(device); //Stop device
+            if (!schedule.IsSet && scheduleDriverCombo.SelectedItem != null)
+            {
+                schedule.IsSet = true;
+                schedule.ScheduleTime = new TimeSpan(scheduleTimePicker.Value.Hour, scheduleTimePicker.Value.Minute, scheduleTimePicker.Value.Second);
+                schedule.DeviceID = ((DriverDetails)scheduleDriverCombo.SelectedItem).DeviceID;
+                schedule.DeviceName = ((DriverDetails)scheduleDriverCombo.SelectedItem).Name;
+
+                scheduleStopSubject.OnNext(Unit.Default); //stoppping scheduler if it's running
+
+                Scheduler.StartSchedule(schedule.ScheduleTime, schedule.DeviceID, scheduleStopSubject); //starting schedule again
+
+                UpdateScheduleUI();
+            }
+            else if (schedule.IsSet)
+            {
+                schedule = new Scheduler.Schedule();
+                scheduleStopSubject.OnNext(Unit.Default);                
+                ClearScheduleUI();
+            }
         }
 
         private void StartReloadingDevices()
@@ -89,9 +108,30 @@ namespace DriverList
             }
         }
 
+        private void UpdateScheduleUI()
+        {
+            scheduleButton.Text = schedule.IsSet ? "Unset" : "Set";
+            if (schedule.IsSet)
+            {
+                scheduleTimePicker.Value = DateTime.Today.Add(schedule.ScheduleTime);
+
+                scheduleDriverCombo.SelectedValue = schedule.DeviceID;
+            }
+        }
+
+        private void ClearScheduleUI()
+        {
+            scheduleButton.Text = "Set";
+            if (schedule.IsSet)
+            {
+                scheduleDriverCombo.SelectedIndex = 0;
+            }
+        }
+
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             stopSubject.OnNext(Unit.Default);
+            scheduleStopSubject.OnNext(Unit.Default);
         }
     }
 }
