@@ -1,5 +1,8 @@
 ﻿namespace DriverList
 {
+    /// <summary>
+    /// Main form of the DriverList application
+    /// </summary>
     partial class MainForm
     {
         /// <summary>

@@ -17,6 +17,9 @@ namespace DriverList
 
         StopDeviceScheduler.Schedule schedule = new StopDeviceScheduler.Schedule();
 
+        /// <summary>
+        /// Constructor for main form
+        /// </summary>
         public MainForm()
         {
             InitializeComponent();

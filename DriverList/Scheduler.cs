@@ -17,9 +17,24 @@ namespace DriverList
         [Serializable]
         public struct Schedule
         {
+            /// <summary>
+            /// Hardware ID of device that will be stopped by scheduler
+            /// </summary>
             public string DeviceID;
+
+            /// <summary>
+            /// Device name of device that will be stopped by scheduler
+            /// </summary>
             public string DeviceName;
+
+            /// <summary>
+            /// Time of the day when scheduler will run
+            /// </summary>
             public TimeSpan ScheduleTime;
+
+            /// <summary>
+            /// Flag that show state of schedule
+            /// </summary>
             public bool IsSet;
         }      
 
@@ -45,7 +60,7 @@ namespace DriverList
                     foreach (var device in DriverProvider.GetDriverList().Where(x => x.hardwareId == deviceId))
                         DriverProvider.StopDevice(device);
                 }
-                catch (Exception ex)
+                catch
                 {
                     //todo : log error or show it to user somehow
                 }
