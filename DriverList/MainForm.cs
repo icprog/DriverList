@@ -32,23 +32,29 @@ namespace DriverList
 
         private void scheduleButton_Click(object sender, EventArgs e)
         {
+            ToggleSchedule();
+        }
+
+        private void ToggleSchedule()
+        {
             if (!schedule.IsSet && scheduleDriverCombo.SelectedItem != null)
             {
-                schedule.IsSet = true;
-                schedule.ScheduleTime = new TimeSpan(scheduleTimePicker.Value.Hour, scheduleTimePicker.Value.Minute, scheduleTimePicker.Value.Second);
-                schedule.DeviceID = ((DriverDetails)scheduleDriverCombo.SelectedItem).DeviceID;
-                schedule.DeviceName = ((DriverDetails)scheduleDriverCombo.SelectedItem).Name;
+                schedule.SetSchedule(
+                    new TimeSpan(scheduleTimePicker.Value.Hour, scheduleTimePicker.Value.Minute, scheduleTimePicker.Value.Second),
+                    ((DriverDetails)scheduleDriverCombo.SelectedItem).Name,
+                    ((DriverDetails)scheduleDriverCombo.SelectedItem).DeviceID);
 
                 scheduleStopSubject.OnNext(Unit.Default); //stop scheduler if it's running
 
-                StopDeviceScheduler.StartSchedule(schedule.ScheduleTime, schedule.DeviceID, scheduleStopSubject); //starting schedule again
+                schedule.StartSchedule(scheduleStopSubject);//starting schedule again
+
                 ScheduleSettingsProvider.Save(schedule); //save serialized schedule
                 UpdateScheduleUI();
             }
             else if (schedule.IsSet)
             {
-                schedule = new StopDeviceScheduler.Schedule();
                 scheduleStopSubject.OnNext(Unit.Default);   //stop scheduler if it's running    
+                schedule.UnsetSchedule();
                 ScheduleSettingsProvider.Clear(); //remove serialized schedule file
                 ClearScheduleUI();
             }
