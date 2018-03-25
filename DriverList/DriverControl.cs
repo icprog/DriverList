@@ -3,23 +3,23 @@
 namespace DriverList
 {
     /// <summary>
-    /// 
+    /// Class that controls devices by stopping them
     /// </summary>
     public class DriverControl
     {
         private IDriverProvider provider;
 
         /// <summary>
-        /// 
+        /// DriverControl Contructor 
         /// </summary>
-        /// <param name="driverProvider"></param>
+        /// <param name="driverProvider">Instance of <see cref="IDriverProvider"/> implementing class</param>
         public DriverControl(IDriverProvider driverProvider)
         {
             provider = driverProvider;
         }
 
         /// <summary>
-        /// 
+        /// DriverControl Contructor 
         /// </summary>
         public DriverControl()
         {

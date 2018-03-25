@@ -35,7 +35,7 @@ namespace DriverList
             StartReloadingDevices();
         }
 
-        private void scheduleButton_Click(object sender, EventArgs e)
+        private void ScheduleButton_Click(object sender, EventArgs e)
         {
             ToggleSchedule();
         }

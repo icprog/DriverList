@@ -3,6 +3,9 @@ using System.Windows.Forms;
 
 namespace DriverList
 {
+    /// <summary>
+    /// Main program class
+    /// </summary>
     static class Program
     {
         /// <summary>

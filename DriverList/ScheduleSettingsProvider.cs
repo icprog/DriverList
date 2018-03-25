@@ -12,9 +12,9 @@ namespace DriverList
         private static string filename = "Schedule.bin";
 
         /// <summary>
-        /// Serializes schedule and saves it to bin file in local directory
+        /// Serializes <see cref="StopDeviceScheduler.Schedule"/> and saves it to bin file in local directory
         /// </summary>
-        /// <param name="schedule">Schedule to save</param>
+        /// <param name="schedule"><see cref="StopDeviceScheduler.Schedule"/> to save</param>
         public static void Save(StopDeviceScheduler.Schedule schedule)
         {
             try
@@ -30,9 +30,9 @@ namespace DriverList
         }
 
         /// <summary>
-        /// Load and deserialize schedule from bin file from local directory
+        /// Load and deserialize <see cref="StopDeviceScheduler.Schedule"/> from bin file from local directory
         /// </summary>
-        /// <returns>Schedule details</returns>
+        /// <returns><see cref="StopDeviceScheduler.Schedule"/> details</returns>
         public static StopDeviceScheduler.Schedule Load()
         {
             if (File.Exists(filename))

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shfbBuild product="Sandcastle Help File Builder and Tools" version="2017.12.30.2" projectFile="C:\Projects\Standalone\DriverList\DriverList\DriverListDocumentation\DriverListDocumentation.shfbproj" started="25.03.2018 23:37:49">
+<shfbBuild product="Sandcastle Help File Builder and Tools" version="2017.12.30.2" projectFile="C:\Projects\Standalone\DriverList\DriverList\DriverListDocumentation\DriverListDocumentation.shfbproj" started="26.03.2018 0:06:10">
 <buildStep step="Initializing">
 Finding tools...
 The Sandcastle tools are located in &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\&#39;
@@ -38,16 +38,16 @@ Copying XML comments files
 <buildStep step="GenerateSharedContent">
 Generating shared content files (en-US, English (United States))...
 <plugIn name="Lightweight Website Style" behavior="After" priority="1000">
-</plugIn>    Last step completed in 00:00:00,0065
+</plugIn>    Last step completed in 00:00:00,0060
 </buildStep>
 <buildStep step="GenerateApiFilter">
 Generating API filter for MRefBuilder...
-    Last step completed in 00:00:00,0040
+    Last step completed in 00:00:00,0005
 </buildStep>
 <buildStep step="GenerateReflectionInfo">
 Generating reflection information...
 [C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe - GenerateRefInfo.proj]
-Build started 25.03.2018 23:37:50.
+Build started 26.03.2018 0:06:11.
 Project &quot;C:\Projects\Standalone\DriverList\DriverList\DriverListDocumentation\Help\Working\GenerateRefInfo.proj&quot; on node 1 (default targets).
 PrepareForBuild:
   Creating directory &quot;obj\Debug\&quot;.
@@ -64,12 +64,12 @@ GenerateRefInfo:
   Portions Copyright c 2006-2016, Eric Woodruff, All Rights Reserved.
   Applying XSL transformation &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\ProductionTransforms\MergeDuplicates.xsl&#39;.
 Done Building Project &quot;C:\Projects\Standalone\DriverList\DriverList\DriverListDocumentation\Help\Working\GenerateRefInfo.proj&quot; (default targets).
-    Last step completed in 00:00:00,7487
+    Last step completed in 00:00:00,7321
 </buildStep>
 <buildStep step="TransformReflectionInfo">
 Transforming reflection output...
 [C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe - TransformManifest.proj]
-Build started 25.03.2018 23:37:51.
+Build started 26.03.2018 0:06:12.
 Project &quot;C:\Projects\Standalone\DriverList\DriverList\DriverListDocumentation\Help\Working\TransformManifest.proj&quot; on node 1 (default targets).
 TransformManifest:
   XslTransform (v2017.12.30.2)
@@ -89,11 +89,11 @@ TransformManifest:
   Portions Copyright c 2006-2016, Eric Woodruff, All Rights Reserved.
   Applying XSL transformation &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\ProductionTransforms\ReflectionToManifest.xsl&#39;.
 Done Building Project &quot;C:\Projects\Standalone\DriverList\DriverList\DriverListDocumentation\Help\Working\TransformManifest.proj&quot; (default targets).
-    Last step completed in 00:00:00,4498
+    Last step completed in 00:00:00,4400
 </buildStep>
 <buildStep step="GenerateNamespaceSummaries">
 Generating namespace summary information...
-    Last step completed in 00:00:00,0326
+    Last step completed in 00:00:00,0331
 </buildStep>
 <buildStep step="CopyConceptualContent">
 Copying conceptual content...
@@ -109,7 +109,7 @@ Creating conceptual topic configuration files...
     Companion files
     _ContentMetadata_.xml
     Merging topic IDs into manifest.xml
-    Last step completed in 00:00:00,0260
+    Last step completed in 00:00:00,0120
 </buildStep>
 <buildStep step="CopyAdditionalContent">
 Copying additional content files...
@@ -118,12 +118,12 @@ C:\Projects\Standalone\DriverList\DriverList\DriverListDocumentation\icons\Help.
 </buildStep>
 <buildStep step="MergeTablesOfContents">
 Merging conceptual and additional tables of contents...
-    Last step completed in 00:00:00,0005
+    Last step completed in 00:00:00,0000
 </buildStep>
 <buildStep step="GenerateIntermediateTableOfContents">
 Generating intermediate table of contents file...
 [C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe - GenerateIntermediateTOC.proj]
-Build started 25.03.2018 23:37:51.
+Build started 26.03.2018 0:06:12.
 Project &quot;C:\Projects\Standalone\DriverList\DriverList\DriverListDocumentation\Help\Working\GenerateIntermediateTOC.proj&quot; on node 1 (default targets).
 GenerateIntermediateTOC:
   XslTransform (v2017.12.30.2)
@@ -132,12 +132,12 @@ GenerateIntermediateTOC:
   Applying XSL transformation &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\\ProductionTransforms\CreateVSToc.xsl&#39;.
 Done Building Project &quot;C:\Projects\Standalone\DriverList\DriverList\DriverListDocumentation\Help\Working\GenerateIntermediateTOC.proj&quot; (default targets).
 Generating conceptual content intermediate TOC file...
-    Last step completed in 00:00:00,2256
+    Last step completed in 00:00:00,2278
 </buildStep>
 <buildStep step="CreateBuildAssemblerConfigs">
 Creating Sandcastle configuration files...
     sandcastle.config
-    Last step completed in 00:00:00,2329
+    Last step completed in 00:00:00,2346
 </buildStep>
 <buildStep step="MergeCustomConfigs">
 Merging custom build component configurations
@@ -150,7 +150,7 @@ C:\Projects\Standalone\DriverList\DriverList\DriverListDocumentation\Help\Workin
 <buildStep step="BuildTopics">
 Building help topics...
 [C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe - BuildTopics.proj]
-Build started 25.03.2018 23:37:52.
+Build started 26.03.2018 0:06:13.
 Project &quot;C:\Projects\Standalone\DriverList\DriverList\DriverListDocumentation\Help\Working\BuildTopics.proj&quot; on node 1 (default targets).
 BuildTopics:
   BuildAssembler (v2017.12.30.2)
@@ -158,30 +158,22 @@ BuildTopics:
   Portions Copyright c 2006-2016, Eric Woodruff, All Rights Reserved.
   Loading configuration...
   Processing topics...
-BuildAssembler : warning : ShowMissingComponent: [T:DriverList.DriverControl] Missing &lt;summary&gt; documentation [C:\Projects\Standalone\DriverList\DriverList\DriverListDocumentation\Help\Working\BuildTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:DriverList.DriverControl.#ctor(DriverList.IDriverProvider)] Missing &lt;param name=&quot;driverProvider&quot;/&gt; documentation [C:\Projects\Standalone\DriverList\DriverList\DriverListDocumentation\Help\Working\BuildTopics.proj]
+BuildAssembler : warning : ResolveReferenceLinksComponent: [M:DriverList.DriverProvider.GetDriverList] Unknown reference link target &#39;T:HardwareHelperLib.DEVICE_INFO&#39;. [C:\Projects\Standalone\DriverList\DriverList\DriverListDocumentation\Help\Working\BuildTopics.proj]
 BuildAssembler : warning : ResolveReferenceLinksComponent: [M:DriverList.DriverProvider.GetDriverList] Unknown reference link target &#39;T:HardwareHelperLib.DEVICE_INFO&#39;. [C:\Projects\Standalone\DriverList\DriverList\DriverListDocumentation\Help\Working\BuildTopics.proj]
 BuildAssembler : warning : ResolveReferenceLinksComponent: [M:DriverList.DriverProvider.StopDevice(HardwareHelperLib.DEVICE_INFO)] Unknown reference link target &#39;T:HardwareHelperLib.DEVICE_INFO&#39;. [C:\Projects\Standalone\DriverList\DriverList\DriverListDocumentation\Help\Working\BuildTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [T:DriverList.IDriverProvider] Missing &lt;summary&gt; documentation [C:\Projects\Standalone\DriverList\DriverList\DriverListDocumentation\Help\Working\BuildTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:DriverList.IDriverProvider.GetDriverList] Missing &lt;summary&gt; documentation [C:\Projects\Standalone\DriverList\DriverList\DriverListDocumentation\Help\Working\BuildTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:DriverList.IDriverProvider.GetDriverList] Missing &lt;returns&gt; documentation [C:\Projects\Standalone\DriverList\DriverList\DriverListDocumentation\Help\Working\BuildTopics.proj]
+BuildAssembler : warning : ResolveReferenceLinksComponent: [M:DriverList.DriverProvider.StopDevice(HardwareHelperLib.DEVICE_INFO)] Unknown reference link target &#39;T:HardwareHelperLib.DEVICE_INFO&#39;. [C:\Projects\Standalone\DriverList\DriverList\DriverListDocumentation\Help\Working\BuildTopics.proj]
 BuildAssembler : warning : ResolveReferenceLinksComponent: [M:DriverList.IDriverProvider.GetDriverList] Unknown reference link target &#39;T:HardwareHelperLib.DEVICE_INFO&#39;. [C:\Projects\Standalone\DriverList\DriverList\DriverListDocumentation\Help\Working\BuildTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:DriverList.IDriverProvider.StopDevice(HardwareHelperLib.DEVICE_INFO)] Missing &lt;summary&gt; documentation [C:\Projects\Standalone\DriverList\DriverList\DriverListDocumentation\Help\Working\BuildTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:DriverList.IDriverProvider.StopDevice(HardwareHelperLib.DEVICE_INFO)] Missing &lt;param name=&quot;device&quot;/&gt; documentation [C:\Projects\Standalone\DriverList\DriverList\DriverListDocumentation\Help\Working\BuildTopics.proj]
+BuildAssembler : warning : ResolveReferenceLinksComponent: [M:DriverList.IDriverProvider.GetDriverList] Unknown reference link target &#39;T:HardwareHelperLib.DEVICE_INFO&#39;. [C:\Projects\Standalone\DriverList\DriverList\DriverListDocumentation\Help\Working\BuildTopics.proj]
 BuildAssembler : warning : ResolveReferenceLinksComponent: [M:DriverList.IDriverProvider.StopDevice(HardwareHelperLib.DEVICE_INFO)] Unknown reference link target &#39;T:HardwareHelperLib.DEVICE_INFO&#39;. [C:\Projects\Standalone\DriverList\DriverList\DriverListDocumentation\Help\Working\BuildTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [T:DriverList.Program] Missing &lt;summary&gt; documentation [C:\Projects\Standalone\DriverList\DriverList\DriverListDocumentation\Help\Working\BuildTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:DriverList.StopDeviceScheduler.#ctor(DriverList.IDriverProvider)] Missing &lt;param name=&quot;driverProvider&quot;/&gt; documentation [C:\Projects\Standalone\DriverList\DriverList\DriverListDocumentation\Help\Working\BuildTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:DriverList.StopDeviceScheduler.CalculateDelay(System.DateTime,System.TimeSpan)] Missing &lt;returns&gt; documentation [C:\Projects\Standalone\DriverList\DriverList\DriverListDocumentation\Help\Working\BuildTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:DriverList.StopDeviceScheduler.CalculateDelay(System.TimeSpan)] Missing &lt;returns&gt; documentation [C:\Projects\Standalone\DriverList\DriverList\DriverListDocumentation\Help\Working\BuildTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:DriverList.StopDeviceScheduler.CalculateDelay(System.TimeSpan)] Missing &lt;param name=&quot;scheduleTime&quot;/&gt; documentation [C:\Projects\Standalone\DriverList\DriverList\DriverListDocumentation\Help\Working\BuildTopics.proj]
+BuildAssembler : warning : ResolveReferenceLinksComponent: [M:DriverList.IDriverProvider.StopDevice(HardwareHelperLib.DEVICE_INFO)] Unknown reference link target &#39;T:HardwareHelperLib.DEVICE_INFO&#39;. [C:\Projects\Standalone\DriverList\DriverList\DriverListDocumentation\Help\Working\BuildTopics.proj]
   Processed 50 topic(s)
-  16 warning(s)
+  8 warning(s)
   CopyFromIndexComponent: &quot;metadata&quot; in-memory cache entries used: 0 of 15.
   ResolveArtLinksComponent: Copying media files...
   CopyFromIndexComponent: &quot;reflection&quot; in-memory cache entries used: 3 of 15.
   CopyFromIndexComponent: &quot;comments&quot; in-memory cache entries used: 1 of 30.
 Done Building Project &quot;C:\Projects\Standalone\DriverList\DriverList\DriverListDocumentation\Help\Working\BuildTopics.proj&quot; (default targets).
-    Last step completed in 00:00:06,5693
+    Last step completed in 00:00:06,2389
 </buildStep>
 <buildStep step="CombiningIntermediateTocFiles">
 Combining conceptual and API intermediate TOC files...
@@ -201,7 +193,7 @@ Processed 50 HTML files
 Sorting keywords and generating See Also indices
 Saving HTML Help 1 keyword index to C:\Projects\Standalone\DriverList\DriverList\DriverListDocumentation\Help\Working\DriverListDocumentation.hhk
 Saving HTML Help 1 table of contents to C:\Projects\Standalone\DriverList\DriverList\DriverListDocumentation\Help\Working\DriverListDocumentation.hhc
-    Last step completed in 00:00:00,2469
+    Last step completed in 00:00:00,2572
 </buildStep>
 <buildStep step="CopyStandardHelpContent">
 Copying standard help content...
@@ -267,7 +259,7 @@ C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyle
 C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-zh-CN.css -&gt; C:\Projects\Standalone\DriverList\DriverList\DriverListDocumentation\Help\Working\Output\HtmlHelp1\styles\branding-zh-CN.css
 C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-zh-TW.css -&gt; C:\Projects\Standalone\DriverList\DriverList\DriverListDocumentation\Help\Working\Output\HtmlHelp1\styles\branding-zh-TW.css
 C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding.css -&gt; C:\Projects\Standalone\DriverList\DriverList\DriverListDocumentation\Help\Working\Output\HtmlHelp1\styles\branding.css
-    Last step completed in 00:00:00,3574
+    Last step completed in 00:00:00,3497
 </buildStep>
 <buildStep step="GenerateHelpFormatTableOfContents">
 Generating HTML Help 1 table of contents file...
@@ -298,9 +290,9 @@ Compiling HTML Help 1 file...
   
   52	Topics
   
-  478	Local links
+  482	Local links
   
-  40	Internet links
+  49	Internet links
   
   0	Graphics
   
@@ -308,19 +300,19 @@ Compiling HTML Help 1 file...
   
   
   
-  Created c:\Projects\Standalone\DriverList\DriverList\DriverListDocumentation\Help\Working\Output\HtmlHelp1\DriverListDocumentation.chm, 91,125 bytes
+  Created c:\Projects\Standalone\DriverList\DriverList\DriverListDocumentation\Help\Working\Output\HtmlHelp1\DriverListDocumentation.chm, 91,393 bytes
   
-  Compression decreased file by 297,242 bytes.
+  Compression decreased file by 298,700 bytes.
   
-    Last step completed in 00:00:01,0830
+    Last step completed in 00:00:00,9682
 </buildStep>
 <buildStep step="CleanIntermediates">
 Removing intermediate files...
-    Last step completed in 00:00:00,1272
+    Last step completed in 00:00:00,1389
 </buildStep>
 <buildStep step="Completed">
 
-Build completed successfully at 25.03.2018 23:38:00.  Total time: 00:00:10,9633
+Build completed successfully at 26.03.2018 0:06:20.  Total time: 00:00:10,5351
 
 </buildStep>
 </shfbBuild>

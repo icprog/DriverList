@@ -151,7 +151,7 @@
             this.scheduleButton.TabIndex = 0;
             this.scheduleButton.Text = "Set";
             this.scheduleButton.UseVisualStyleBackColor = true;
-            this.scheduleButton.Click += new System.EventHandler(this.scheduleButton_Click);
+            this.scheduleButton.Click += new System.EventHandler(this.ScheduleButton_Click);
             // 
             // scheduleTimePicker
             // 

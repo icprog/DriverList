@@ -40,7 +40,7 @@ namespace DriverList
             /// <summary>
             /// Set schedule fields and mark it as active
             /// </summary>
-            /// <param name="scheduleTime">Time to run schedule</param>
+            /// <param name="scheduleTime"><see cref="TimeSpan"/> to run schedule</param>
             /// <param name="deviceName">Device name to stop by schedule</param>
             /// <param name="deviceID">DeviceId to stop by schedule</param>
             public void SetSchedule(TimeSpan scheduleTime, string deviceName, string deviceID)
@@ -66,16 +66,16 @@ namespace DriverList
         private IDriverProvider provider;
 
         /// <summary>
-        /// 
+        /// StopDeviceScheduler constructor
         /// </summary>
-        /// <param name="driverProvider"></param>
+        /// <param name="driverProvider">Instance of class that implements <see cref="IDriverProvider"/></param>
         public StopDeviceScheduler(IDriverProvider driverProvider)
         {
             provider = driverProvider;
         }
 
         /// <summary>
-        /// 
+        /// StopDeviceScheduler constructor
         /// </summary>
         public StopDeviceScheduler()
         {
@@ -85,8 +85,8 @@ namespace DriverList
         /// <summary>
         /// Calculate delay to due time from DateTime.Now
         /// </summary>
-        /// <param name="scheduleTime"></param>
-        /// <returns></returns>
+        /// <param name="scheduleTime"><see cref="TimeSpan"/> to run schedule</param>
+        /// <returns><see cref="TimeSpan"/> delay to <see cref="Schedule"/> first run</returns>
         public TimeSpan CalculateDelay(TimeSpan scheduleTime)
         {
             return CalculateDelay(DateTime.Now, scheduleTime);
@@ -95,9 +95,9 @@ namespace DriverList
         /// <summary>
         /// Calculate delay to due time from desired DateTime
         /// </summary>
-        /// <param name="startDate">DateTime from which delay will be calculated</param>
-        /// <param name="scheduleTime">Time to which delay will be calculated</param>
-        /// <returns></returns>
+        /// <param name="startDate"><see cref="DateTime"/> from which delay will be calculated</param>
+        /// <param name="scheduleTime"><see cref="TimeSpan"/> to which delay will be calculated</param>
+        /// <returns><see cref="TimeSpan"/> delay to <see cref="Schedule"/> first run</returns>
         public TimeSpan CalculateDelay(DateTime startDate, TimeSpan scheduleTime)
         {
             var fireDate = startDate.Date.Add(scheduleTime);
@@ -108,7 +108,7 @@ namespace DriverList
         /// <summary>
         /// Start daily schedule to stop desired device at desired time
         /// </summary>
-        /// <param name="scheduleTime">Daytime to execute schedule task</param>
+        /// <param name="scheduleTime"><see cref="TimeSpan"/> to run schedule to execute schedule task</param>
         /// <param name="deviceId">Device ID that should be stopped</param>
         /// <param name="stopSubject">Control subject, to stop schedule anytime</param>
         public void StartSchedule(TimeSpan scheduleTime, string deviceId, Subject<Unit> stopSubject)
