@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DriverList", "DriverList.cs
 EndProject
 Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "DriverListDocumentation", "DriverListDocumentation\DriverListDocumentation.shfbproj", "{EF0EDBA2-74C3-4C59-9820-C32587427C5D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DriverList.Test", "..\DriverList.Test\DriverList.Test.csproj", "{96260170-184B-485E-96BD-FEF1C7B4C4F7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{EF0EDBA2-74C3-4C59-9820-C32587427C5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF0EDBA2-74C3-4C59-9820-C32587427C5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF0EDBA2-74C3-4C59-9820-C32587427C5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96260170-184B-485E-96BD-FEF1C7B4C4F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96260170-184B-485E-96BD-FEF1C7B4C4F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96260170-184B-485E-96BD-FEF1C7B4C4F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96260170-184B-485E-96BD-FEF1C7B4C4F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
