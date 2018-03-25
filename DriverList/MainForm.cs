@@ -13,9 +13,13 @@ namespace DriverList
     public partial class MainForm : Form
     {
         readonly Subject<Unit> stopSubject = new Subject<Unit>();
-        readonly Subject<Unit> scheduleStopSubject = new Subject<Unit>();
+        readonly Subject<Unit> scheduleStopSubject = new Subject<Unit>();              
 
         StopDeviceScheduler.Schedule schedule = new StopDeviceScheduler.Schedule();
+
+        private IDriverProvider provider = new DriverProvider();
+
+        StopDeviceScheduler scheduler;
 
         /// <summary>
         /// Constructor for main form
@@ -23,6 +27,7 @@ namespace DriverList
         public MainForm()
         {
             InitializeComponent();
+            scheduler = new StopDeviceScheduler(provider);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -46,7 +51,7 @@ namespace DriverList
 
                 scheduleStopSubject.OnNext(Unit.Default); //stop scheduler if it's running
 
-                schedule.StartSchedule(scheduleStopSubject);//starting schedule again
+                scheduler.StartSchedule(schedule.ScheduleTime, schedule.DeviceID, scheduleStopSubject);//starting schedule again
 
                 ScheduleSettingsProvider.Save(schedule); //save serialized schedule
                 UpdateScheduleUI();
@@ -67,7 +72,7 @@ namespace DriverList
             Observable.Timer(TimeSpan.Zero, TimeSpan.FromSeconds(10)) //Start new observable timer
                            .Select(x =>
                        {
-                           return DriverProvider.GetDriverList();  //on each timer tick get list of all drivers in separate thread
+                           return provider.GetDriverList();  //on each timer tick get list of all drivers in separate thread
                        })
                        .TakeUntil(stopSubject)  //more control. If we want we can stop it anytime
                        .ObserveOn(SynchronizationContext.Current)   //Sync results with current thread
@@ -83,7 +88,7 @@ namespace DriverList
 
             if (schedule.IsSet)
             {
-                StopDeviceScheduler.StartSchedule(schedule.ScheduleTime, schedule.DeviceID, scheduleStopSubject);
+                scheduler.StartSchedule(schedule.ScheduleTime, schedule.DeviceID, scheduleStopSubject);
             }
         }
 

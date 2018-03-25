@@ -52,15 +52,6 @@ namespace DriverList
             }
 
             /// <summary>
-            /// Start schedule execution 
-            /// </summary>
-            /// <param name="stopSubject">Control subject, to stop schedule anytime</param>
-            public void StartSchedule(Subject<Unit> stopSubject)
-            {
-                StopDeviceScheduler.StartSchedule(this.ScheduleTime, this.DeviceID, stopSubject);
-            }
-
-            /// <summary>
             /// Unset all fields and mark schedule as inactive
             /// </summary>
             public void UnsetSchedule()
@@ -72,12 +63,31 @@ namespace DriverList
             }
         }
 
+        private IDriverProvider provider;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="driverProvider"></param>
+        public StopDeviceScheduler(IDriverProvider driverProvider)
+        {
+            provider = driverProvider;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public StopDeviceScheduler()
+        {
+            provider = new DriverProvider();
+        }
+
         /// <summary>
         /// Calculate delay to due time from DateTime.Now
         /// </summary>
         /// <param name="scheduleTime"></param>
         /// <returns></returns>
-        private static TimeSpan CalculateDelay(TimeSpan scheduleTime)
+        public TimeSpan CalculateDelay(TimeSpan scheduleTime)
         {
             return CalculateDelay(DateTime.Now, scheduleTime);
         }
@@ -88,7 +98,7 @@ namespace DriverList
         /// <param name="startDate">DateTime from which delay will be calculated</param>
         /// <param name="scheduleTime">Time to which delay will be calculated</param>
         /// <returns></returns>
-        private static TimeSpan CalculateDelay(DateTime startDate, TimeSpan scheduleTime)
+        public TimeSpan CalculateDelay(DateTime startDate, TimeSpan scheduleTime)
         {
             var fireDate = startDate.Date.Add(scheduleTime);
 
@@ -101,7 +111,7 @@ namespace DriverList
         /// <param name="scheduleTime">Daytime to execute schedule task</param>
         /// <param name="deviceId">Device ID that should be stopped</param>
         /// <param name="stopSubject">Control subject, to stop schedule anytime</param>
-        public static void StartSchedule(TimeSpan scheduleTime, string deviceId, Subject<Unit> stopSubject)
+        public void StartSchedule(TimeSpan scheduleTime, string deviceId, Subject<Unit> stopSubject)
         {
             var delay = CalculateDelay(scheduleTime); //calculating delay to due time
 
@@ -111,8 +121,7 @@ namespace DriverList
             {
                 try
                 {
-                    foreach (var device in DriverProvider.GetDriverList().Where(x => x.hardwareId == deviceId))
-                        DriverProvider.StopDevice(device);
+                   new DriverControl(provider).StopDeviceByID(deviceId);
                 }
                 catch
                 {
